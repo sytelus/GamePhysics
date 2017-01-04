@@ -1,0 +1,128 @@
+*Glenn Fiedler
+Independent contractor based in Sydney
+Previously employed at Irrational Games (2001-2004) and Auran (1998-1999)
+"Tribes: Vengeance" character physics and animation systems
+"Freedom Force" character movement, pathfinder, sound system and physics engine
+Article in Game Programming Gems 4: "Terrain Occlusion Culling with Horizons"
+Open source graphics libraries "OpenPTC", "TinyPTC" and "Pixel Toaster"
+http://www.gaffer.org
+
+*Zen of Networked Physics
+How do first person shooters network character physics?
+How can these techniques be applied to networking other physics simulations?
+What does the future hold for networked physics simulation?
+
+(cube falls - discuss physics simulation and what it can do)
+
+*Networking in a Perfect World
+Adequate bandwidth
+All data sent arrives at destination
+Data arrives in the correct order
+Latency is a low constant value
+Packets arrive at regular intervals
+
+(show cube with ghosts - explain latency and what each cube represents)
+
+*How did I just do that?
+Client runs a physics simulation using input from the player
+Client sends input to the server
+Server runs its own physics simulation controlled by the input sent from the client
+Server resends input to the proxy
+Proxy runs its physics simulation using the input from the server
+Each physics simulation is completely separate but they stay perfectly in sync! 
+
+*Not as easy as it looks
+Physics must be completely deterministic!
+You need to design for determinism from the start
+Fix your physics timestep
+No really, I mean it. If you dont fix your timestep you are insane
+Drive physics entirely from input data
+Know your physics state
+Remember that any deviation, no matter how small, will cause the simulations to diverge...
+
+*Real World Networking
+UDP vs. TCP
+Limited bandwidth
+Packet loss
+Out of order delivery
+High latency that fluctuates
+Irregular arrival of packets
+
+*Handing real world conditions
+The bottom line is that physics simulations will desync and you have to deal with it
+The server is the authority on physics
+Corrections are sent from server to the client and proxy
+Each correction contains physics state, time and input
+The client and proxy compare their physics state with the server each correction and adjust to stay in sync
+
+(show cube with packet loss of 10%)
+
+*Client side prediction
+Correcting the proxy is easy: just snap physics state to the correction
+But the client physics is ahead of the server...
+This is called "client side prediction" 
+First introduced in Quakeworld
+Now a standard technique in first person shooters
+Any correction sent to the client is a correction in the past!
+
+(show history buffer and blue cube with 2 seconds latency)
+
+*Client side correction
+Store a list of recent moves
+Rewind back to the correction time
+Replay stored moves to get the corrected position at the present time
+Discard moves older than the last correction from the server.
+Remember: your physics must be absolutely deterministic for this to work!
+If you are not deterministic you risk a feedback loop of corrections
+Ouch.
+
+*Nothing comes for free
+Client side prediction seems magical
+Latency is completely eliminated for client physics
+Downside: interacting with other players causes snapping
+Packet loss also causes snapping when input is lost
+Snapping becomes more severe as latency increases
+
+(show snapping cube at 50% packet loss and 2 seconds lag) 
+
+*Smoothing
+Commonly used in first person shooters to hide snapping due to corrections
+Exponentially smoothed moving average
+Smoothing is just a visual effect, dont feed it back into the physics
+Trades added latency for smoothness
+Apply smoothing adaptively or it becomes too sloppy
+
+(show red and blue cubes under 10% packet loss - contrast white cube snapping with red smoothed)
+
+(show red cube with 50% packet loss and 2 second lag - smoothing alone isnt good enough!)
+
+*Important moves
+Smoothing is just a cosmetic effect, not a solution to the problem
+Client side snapping feels horrible even when its smoothed (warping)
+How can we eliminate snapping on an unreliable connection?
+Think about it. Snapping occurs when the server missed a change in the input sent from the client.
+We will call these changes in input "important moves".
+Redundantly sending important moves with each input packet completely eliminates client snapping due to packet loss
+
+(enable important moves - show no snapping occurring even when 50% packet loss 2 second lag!)
+
+*The Future
+Snapping due to interactions with other players cannot be eliminated.
+This is the fundamental cost of client side prediction.
+Will client side prediction become obsolete?
+Future network games will trade latency for increased depth of interaction.
+
+*Questions?
+ 
+*Articles
+A supporting set of articles for this talk are available at: 
+
+http://www.gaffer.org/articles
+
+Topics include integration, time stepping, rigid body dynamics in 3D, spring physics and networking.
+
+Each article comes with full source code including source for the networked cube physics simulation I showed you today.
+enjoy!
+
+Glenn Fiedler 
+gaffer@gaffer.org

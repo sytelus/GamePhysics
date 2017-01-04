@@ -1,0 +1,77 @@
+K 25
+svn:wc:ra_dav:version-url
+V 33
+/svn/!svn/ver/2/trunk/PhysicsIn3D
+END
+Windows.h
+K 25
+svn:wc:ra_dav:version-url
+V 43
+/svn/!svn/ver/2/trunk/PhysicsIn3D/Windows.h
+END
+Physics3D.sln
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/2/trunk/PhysicsIn3D/Physics3D.sln
+END
+Cube.h
+K 25
+svn:wc:ra_dav:version-url
+V 40
+/svn/!svn/ver/2/trunk/PhysicsIn3D/Cube.h
+END
+Mathematics.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/2/trunk/PhysicsIn3D/Mathematics.h
+END
+Apple.h
+K 25
+svn:wc:ra_dav:version-url
+V 41
+/svn/!svn/ver/2/trunk/PhysicsIn3D/Apple.h
+END
+Vector.h
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/2/trunk/PhysicsIn3D/Vector.h
+END
+Physics3D.exe
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/2/trunk/PhysicsIn3D/Physics3D.exe
+END
+OpenGL.h
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/2/trunk/PhysicsIn3D/OpenGL.h
+END
+Physics3D.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/2/trunk/PhysicsIn3D/Physics3D.cpp
+END
+Matrix.h
+K 25
+svn:wc:ra_dav:version-url
+V 42
+/svn/!svn/ver/2/trunk/PhysicsIn3D/Matrix.h
+END
+Quaternion.h
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/svn/!svn/ver/2/trunk/PhysicsIn3D/Quaternion.h
+END
+Physics3D.vcproj
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/2/trunk/PhysicsIn3D/Physics3D.vcproj
+END
